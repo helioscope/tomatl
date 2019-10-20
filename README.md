@@ -26,6 +26,11 @@ You can give it a look at [helioscope.github.io/tomatl](https://helioscope.githu
     * This started with the `brunch/with-react` Brunch "skeleton," then added SASS support.
 
 
+## To Do:
+
+* Update dependencies. They are egregiously out of date now.
+
+
 ## Extra rambling
 
 I made this after becoming a parent and have used it more or less daily for a few years. Meant to put it on GitHub originally, but ended up just leaving it running locally. Code & dependencies are a bit dusty (it's been a few years).
