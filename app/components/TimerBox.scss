@@ -1,0 +1,62 @@
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	49% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 1;
+	}
+}
+.TimerBox {
+	width: 200px;
+	border: solid 1px rgba(255,255,255,0.25);
+	border-radius: 10px;
+	padding: 10px;
+}
+.TimerBox__time-remaining {
+	// width: 110px;
+	// margin: auto;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+
+    opacity: 1.0;
+
+    .TimerBox_done & {
+    	opacity: 0.5;
+    }
+}
+.TimerBox_paused .TimerBox__col {
+	animation: blink 1.8s infinite;
+}
+
+.TimerBox__preset-selector {
+	margin: auto;
+	width: 100%;
+	margin-bottom: 10px;
+	color: rgba(255,255,255,0.75);
+}
+
+.TimerBox__buttons {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+
+	button {
+		margin: 2px;
+		font-size: 14px;
+		width: 100%;
+	}
+}
+
+.TimerBox__button_reset {
+	background-color: rgba(255, 255, 255, 0.05);
+}

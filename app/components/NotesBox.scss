@@ -1,0 +1,23 @@
+.NotesBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.NotesBox__input-wrapper {
+	margin: 5px;
+}
+
+.NotesBox__input-label {
+	font-size: 12px;
+	letter-spacing: 4px;
+	padding: 0 4px;
+	color: rgba(120,120,120,0.3);
+}
+
+.NotesBox__input {
+  width: 20vw;
+  height: 30vh;
+  min-width: 150px;
+}

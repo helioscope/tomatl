@@ -1,0 +1,29 @@
+{
+  "name": "tomatl",
+  "description": "a little pomodoro timer with notes",
+  "private": true,
+  "author": "the universe at large, arguably, in some form. who is reading this? oh no",
+  "version": "0.0.1",
+  "repository": "",
+  "scripts": {
+    "start": "brunch watch --server",
+    "build": "brunch build --production"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.19.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "tone": "^0.11.12"
+  },
+  "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
+    "babel-brunch": "~6.0",
+    "babel-preset-latest": "^6",
+    "babel-preset-react": "~6.22",
+    "brunch": "^2.10.17",
+    "clean-css-brunch": "^2",
+    "sass-brunch": "^2.10.7",
+    "uglify-js-brunch": "^2"
+  }
+}
