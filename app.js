@@ -1,1 +1,823 @@
-!function(){"use strict";var e="undefined"==typeof global?self:global;if("function"!=typeof e.require){var t={},n={},i={},o={}.hasOwnProperty,r=/^\.\.?(\/|$)/,s=function(e,t){for(var n,i=[],o=(r.test(t)?e+"/"+t:t).split("/"),s=0,a=o.length;s<a;s++)n=o[s],".."===n?i.pop():"."!==n&&""!==n&&i.push(n);return i.join("/")},a=function(e){return e.split("/").slice(0,-1).join("/")},u=function(t){return function(n){var i=s(a(t),n);return e.require(i,t)}},l=function(e,t){var i=b&&b.createHot(e),o={id:e,exports:{},hot:i};return n[e]=o,t(o.exports,u(e),o),o.exports},c=function(e){return i[e]?c(i[e]):e},d=function(e,t){return c(s(a(e),t))},f=function(e,i){null==i&&(i="/");var r=c(e);if(o.call(n,r))return n[r].exports;if(o.call(t,r))return l(r,t[r]);throw new Error("Cannot find module '"+e+"' from '"+i+"'")};f.alias=function(e,t){i[t]=e};var m=/\.[^.\/]+$/,p=/\/index(\.[^\/]+)?$/,h=function(e){if(m.test(e)){var t=e.replace(m,"");o.call(i,t)&&i[t].replace(m,"")!==t+"/index"||(i[t]=e)}if(p.test(e)){var n=e.replace(p,"");o.call(i,n)||(i[n]=e)}};f.register=f.define=function(e,i){if(e&&"object"==typeof e)for(var r in e)o.call(e,r)&&f.register(r,e[r]);else t[e]=i,delete n[e],h(e)},f.list=function(){var e=[];for(var n in t)o.call(t,n)&&e.push(n);return e};var b=e._hmr&&new e._hmr(d,f,t,n);f._cache=n,f.hmr=b&&b.wrap,f.brunch=!0,e.require=f}}(),function(){var e;"undefined"==typeof window?this:window;require.register("components/App.jsx",function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function a(e){if(w>=N.length)w=0,p["default"].Transport.stop();else{var t=N[w];T.triggerAttackRelease(t[0],t[1],e),w++}}Object.defineProperty(e,"__esModule",{value:!0});var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),l=t("react"),c=i(l),d=t("lodash"),f=(i(d),t("moment")),m=(i(f),t("tone")),p=i(m),h=t("../util/notifier"),b=i(h),y=t("./TimerBox"),v=i(y),_=t("./NotesBox"),g=i(_),T=(new p["default"].Synth).toMaster(),k={enableTimerHotkeys:!0},w=0,N=[["C2","16n"],["G3","16n"],["B3","16n"],["C3","16n"],["G3","16n"]];p["default"].Transport.schedule(a,0),p["default"].Transport.schedule(a,"0:0.5"),p["default"].Transport.schedule(a,"0:1"),p["default"].Transport.schedule(a,"0:1.5"),p["default"].Transport.schedule(a,"0:2"),p["default"].Transport.schedule(a,"0:3");var P=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state=Object.assign({},k),n}return s(t,e),u(t,[{key:"componentDidMount",value:function(){b["default"].hasPermission()||b["default"].askPermission()}},{key:"onTimerDing",value:function(e,t){this.cueDing(),b["default"].send({title:"Ding!",message:"Time's up!",duration:1e4,id:Math.random()})}},{key:"cueDing",value:function(){p["default"].Transport.start()}},{key:"onInputFocus",value:function(){this.setState({enableTimerHotkeys:!1})}},{key:"onInputBlur",value:function(){this.setState({enableTimerHotkeys:!0})}},{key:"render",value:function(){return c["default"].createElement("div",{className:"App"},c["default"].createElement(v["default"],{id:"main-timer",onDing:this.onTimerDing.bind(this),useHotKeys:this.state.enableTimerHotkeys}),c["default"].createElement(g["default"],{onInputFocus:this.onInputFocus.bind(this),onInputBlur:this.onInputBlur.bind(this)}))}}]),t}(c["default"].Component);e["default"]=P}),require.register("components/NotesBox.jsx",function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),u=t("react"),l=i(u),c={onInputFocus:function(){},onInputBlur:function(){}},d={nowNotes:"",todayNotes:""},f=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state=Object.assign({},d,{nowNotes:localStorage.getItem("nowNotes")||"",todayNotes:localStorage.getItem("todayNotes")||""}),n}return s(t,e),a(t,[{key:"handleChangeNowNotes",value:function(e){var t=e.target.value;localStorage.setItem("nowNotes",t),this.setState({nowNotes:t})}},{key:"handleChangeTodayNotes",value:function(e){var t=e.target.value;localStorage.setItem("todayNotes",t),this.setState({todayNotes:t})}},{key:"handleInputFocus",value:function(e){this.props.onInputFocus()}},{key:"handleInputBlur",value:function(e){this.props.onInputBlur()}},{key:"render",value:function(){this.state;return l["default"].createElement("div",{className:"NotesBox "},l["default"].createElement("div",{className:"NotesBox__input-wrapper NotesBox__now-notes"},l["default"].createElement("div",{className:"NotesBox__input-label"},"NOW:"),l["default"].createElement("textarea",{className:"NotesBox__input",value:this.state.nowNotes,onChange:this.handleChangeNowNotes.bind(this),onFocus:this.handleInputFocus.bind(this),onBlur:this.handleInputBlur.bind(this)})),l["default"].createElement("div",{className:"NotesBox__input-wrapper NotesBox__today-notes"},l["default"].createElement("div",{className:"NotesBox__input-label"},"TODAY:"),l["default"].createElement("textarea",{className:"NotesBox__input",value:this.state.todayNotes,onChange:this.handleChangeTodayNotes.bind(this),onFocus:this.handleInputFocus.bind(this),onBlur:this.handleInputBlur.bind(this)})))}}]),t}(l["default"].Component);f.defaultProps=c,e["default"]=f}),require.register("components/TimerBox.jsx",function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),u=t("react"),l=i(u),c=t("lodash"),d=i(c),f=t("moment"),m=i(f),p=t("tone"),h=i(p),b={id:null,tickInterval:50,onDing:function(e,t){},useHotKeys:!0},y=[{label:"pomodoro - work",duration:15e5},{label:"pomodoro - short break",duration:3e5},{label:"pomodoro - long break",duration:6e5},{label:"one minute",duration:6e4}],v={selectedPresetTime:y[0],bankedTime:0,startTime:0,endTime:y[0].duration,isRunning:!1,didDing:!1,timeout:null,lastTick:0},_=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state=Object.assign({},v),n}return s(t,e),a(t,[{key:"componentDidMount",value:function(){window.addEventListener("keydown",this.onKeyDown.bind(this))}},{key:"componentWillUnmount",value:function(){clearTimeout(this.state.timeout),window.removeEventListener("keydown",this.onKeyDown.bind(this))}},{key:"selectPreset",value:function(e){var t={selectedPresetTime:e,endTime:e.duration};h["default"].context.resume(),this.state.didDing&&(t.bankedTime=0,t.didDing=!1),this.state.isRunning||(t.timeout=setTimeout(this.onTick.bind(this),this.props.tickInterval),t.isRunning=!0,t.startTime=new Date),this.setState(t)}},{key:"onKeyDown",value:function(e){if(this.props.useHotKeys)if(32==e.keyCode)this.state.isRunning?this.onPressPause():this.state.didDing?this.onPressBegin():this.state.bankedTime>0?this.onPressResume():this.onPressBegin();else if(e.keyCode>=49&&e.keyCode<=57){var t=e.keyCode-49;t<y.length&&this.selectPreset(y[t])}}},{key:"onSelectPresetTime",value:function(e){var t=e.target.value,n=d["default"].find(y,{label:t});this.selectPreset(n)}},{key:"onPressBegin",value:function(){h["default"].context.resume(),this.setState({startTime:new Date,bankedTime:0,timeout:setTimeout(this.onTick.bind(this),this.props.tickInterval),isRunning:!0,didDing:!1})}},{key:"onPressPause",value:function(){clearTimeout(this.state.timeout),this.setState({bankedTime:this.state.bankedTime+(new Date-this.state.startTime),startTime:0,isRunning:!1,timeout:null})}},{key:"onPressResume",value:function(){h["default"].context.resume(),this.setState({startTime:new Date,isRunning:!0,timeout:setTimeout(this.onTick.bind(this),this.props.tickInterval)})}},{key:"onPressReset",value:function(){this.setState({startTime:new Date,bankedTime:0,didDing:!1})}},{key:"onTick",value:function(){var e=this.state,t=null,n=this.calculateMsRemaining();clearTimeout(e.timeout),n<=0?this.setState({bankedTime:e.endTime-n,isRunning:!1,didDing:!0,lastTick:new Date,timeout:null},function(){this.props.onDing(this.props.id)}.bind(this)):(e.isRunning&&(t=setTimeout(this.onTick.bind(this),this.props.tickInterval)),this.setState({lastTick:new Date,timeout:t}))}},{key:"calculateMsRemaining",value:function(){var e=this.state,t=e.endTime-e.bankedTime;return e.isRunning&&(t-=new Date-e.startTime),t}},{key:"renderPresetSelector",value:function(){var e=this.state,t=[],n="";return e.selectedPresetTime&&(n=e.selectedPresetTime.label),d["default"].each(y,function(e){t.push(l["default"].createElement("option",{value:e.label,key:e.label},e.label))}),l["default"].createElement("select",{className:"TimerBox__preset-selector",name:"preset-times",value:n,onChange:this.onSelectPresetTime.bind(this)},t)}},{key:"render",value:function(){var e=this.state,t=this.calculateMsRemaining(),n=m["default"].duration(Math.ceil(t/1e3),"s"),i=n.minutes(),o=n.seconds(),r=null,s=l["default"].createElement("button",{className:"TimerBox__button_reset",onClick:this.onPressReset.bind(this)},"Reset"),a="";return e.isRunning?(a="TimerBox_running",r=l["default"].createElement("button",{className:"TimerBox__button_pause",onClick:this.onPressPause.bind(this)},"Pause")):e.didDing?(a="TimerBox_done",r=l["default"].createElement("button",{className:"TimerBox__button_restart",onClick:this.onPressBegin.bind(this)},"Restart")):e.bankedTime>0?(a="TimerBox_paused",r=l["default"].createElement("button",{className:"TimerBox__button_resume",onClick:this.onPressResume.bind(this)},"Resume")):r=l["default"].createElement("button",{className:"TimerBox__button_start",onClick:this.onPressBegin.bind(this)},"Start"),l["default"].createElement("div",{className:"TimerBox "+a},l["default"].createElement("div",{className:"TimerBox__time-remaining"},d["default"].padStart(i,2,"0")," ",l["default"].createElement("span",{className:"TimerBox__col"},":")," ",d["default"].padStart(o,2,"0")),this.renderPresetSelector(),l["default"].createElement("div",{className:"TimerBox__buttons"},r,s))}}]),t}(l["default"].Component);_.defaultProps=b,e["default"]=_}),require.register("initialize.js",function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{"default":e}}var o=t("react-dom"),r=i(o),s=t("react"),a=i(s),u=t("components/App"),l=i(u);document.addEventListener("DOMContentLoaded",function(){r["default"].render(a["default"].createElement(l["default"],null),document.querySelector("#app"))})}),require.register("util/notifier.js",function(e,t,n){"use strict";function i(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=new Notification(e.title||"",{body:e.message||"",icon:e.icon||r.defaultIcon}),n=e.duration||r.maxDisplayTime;setTimeout(function(){t.close()}.bind(t),n)}Object.defineProperty(e,"__esModule",{value:!0});var o={maxDisplayTime:5e3,defaultIcon:null},r=Object.assign({},o);e["default"]={setOptions:function(e){r=Object.assign({},o,r,e)},askPermission:function(){return Notification.requestPermission()},hasAskedPermission:function(){return"granted"===Notification.permission||"denied"===Notification.permission},hasPermission:function(){return"granted"===Notification.permission},send:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};i(e)}}}),require.alias("buffer/index.js","buffer"),require.alias("process/browser.js","process"),e=require("process"),require.register("___globals___",function(e,t,n){})}(),require("___globals___");
+(function() {
+  'use strict';
+
+  var globals = typeof global === 'undefined' ? self : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var aliases = {};
+  var has = {}.hasOwnProperty;
+
+  var expRe = /^\.\.?(\/|$)/;
+  var expand = function(root, name) {
+    var results = [], part;
+    var parts = (expRe.test(name) ? root + '/' + name : name).split('/');
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function expanded(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var hot = hmr && hmr.createHot(name);
+    var module = {id: name, exports: {}, hot: hot};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var expandAlias = function(name) {
+    return aliases[name] ? expandAlias(aliases[name]) : name;
+  };
+
+  var _resolve = function(name, dep) {
+    return expandAlias(expand(dirname(name), dep));
+  };
+
+  var require = function(name, loaderPath) {
+    if (loaderPath == null) loaderPath = '/';
+    var path = expandAlias(name);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    throw new Error("Cannot find module '" + name + "' from '" + loaderPath + "'");
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  var extRe = /\.[^.\/]+$/;
+  var indexRe = /\/index(\.[^\/]+)?$/;
+  var addExtensions = function(bundle) {
+    if (extRe.test(bundle)) {
+      var alias = bundle.replace(extRe, '');
+      if (!has.call(aliases, alias) || aliases[alias].replace(extRe, '') === alias + '/index') {
+        aliases[alias] = bundle;
+      }
+    }
+
+    if (indexRe.test(bundle)) {
+      var iAlias = bundle.replace(indexRe, '');
+      if (!has.call(aliases, iAlias)) {
+        aliases[iAlias] = bundle;
+      }
+    }
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (bundle && typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          require.register(key, bundle[key]);
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+      delete cache[bundle];
+      addExtensions(bundle);
+    }
+  };
+
+  require.list = function() {
+    var list = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        list.push(item);
+      }
+    }
+    return list;
+  };
+
+  var hmr = globals._hmr && new globals._hmr(_resolve, require, modules, cache);
+  require._cache = cache;
+  require.hmr = hmr && hmr.wrap;
+  require.brunch = true;
+  globals.require = require;
+})();
+
+(function() {
+var global = typeof window === 'undefined' ? this : window;
+var process;
+var __makeRelativeRequire = function(require, mappings, pref) {
+  var none = {};
+  var tryReq = function(name, pref) {
+    var val;
+    try {
+      val = require(pref + '/node_modules/' + name);
+      return val;
+    } catch (e) {
+      if (e.toString().indexOf('Cannot find module') === -1) {
+        throw e;
+      }
+
+      if (pref.indexOf('node_modules') !== -1) {
+        var s = pref.split('/');
+        var i = s.lastIndexOf('node_modules');
+        var newPref = s.slice(0, i).join('/');
+        return tryReq(name, newPref);
+      }
+    }
+    return none;
+  };
+  return function(name) {
+    if (name in mappings) name = mappings[name];
+    if (!name) return;
+    if (name[0] !== '.' && pref) {
+      var val = tryReq(name, pref);
+      if (val !== none) return val;
+    }
+    return require(name);
+  }
+};
+require.register("components/App.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _tone = require('tone');
+
+var _tone2 = _interopRequireDefault(_tone);
+
+var _notifier = require('../util/notifier');
+
+var _notifier2 = _interopRequireDefault(_notifier);
+
+var _TimerBox = require('./TimerBox');
+
+var _TimerBox2 = _interopRequireDefault(_TimerBox);
+
+var _NotesBox = require('./NotesBox');
+
+var _NotesBox2 = _interopRequireDefault(_NotesBox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var synth = new _tone2.default.Synth().toMaster();
+
+var defaultState = {
+  enableTimerHotkeys: true
+};
+
+var pos = 0;
+var sequence = [['C2', '16n'], ['G3', '16n'], ['B3', '16n'], ['C3', '16n'], ['G3', '16n']];
+
+function triggerSynth(time) {
+  //the time is the sample-accurate time of the event
+  if (pos >= sequence.length) {
+    pos = 0;
+    _tone2.default.Transport.stop();
+  } else {
+    var note = sequence[pos];
+    synth.triggerAttackRelease(note[0], note[1], time);
+    pos++;
+  }
+}
+
+//schedule a few notes
+_tone2.default.Transport.schedule(triggerSynth, 0);
+_tone2.default.Transport.schedule(triggerSynth, '0:0.5');
+_tone2.default.Transport.schedule(triggerSynth, '0:1');
+_tone2.default.Transport.schedule(triggerSynth, '0:1.5');
+_tone2.default.Transport.schedule(triggerSynth, '0:2');
+_tone2.default.Transport.schedule(triggerSynth, '0:3');
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = Object.assign({}, defaultState);
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (!_notifier2.default.hasPermission()) {
+        _notifier2.default.askPermission();
+      }
+      // this.cueDing();
+    }
+  }, {
+    key: 'onTimerDing',
+    value: function onTimerDing(id, preset) {
+      this.cueDing();
+      _notifier2.default.send({
+        title: "Ding!",
+        message: "Time's up!",
+        duration: 10 * 1000,
+        id: Math.random()
+      });
+    }
+  }, {
+    key: 'cueDing',
+    value: function cueDing() {
+      _tone2.default.Transport.start();
+    }
+  }, {
+    key: 'onInputFocus',
+    value: function onInputFocus() {
+      this.setState({
+        enableTimerHotkeys: false
+      });
+    }
+  }, {
+    key: 'onInputBlur',
+    value: function onInputBlur() {
+      this.setState({
+        enableTimerHotkeys: true
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'App' },
+        _react2.default.createElement(_TimerBox2.default, { id: "main-timer", onDing: this.onTimerDing.bind(this), useHotKeys: this.state.enableTimerHotkeys }),
+        _react2.default.createElement(_NotesBox2.default, { onInputFocus: this.onInputFocus.bind(this), onInputBlur: this.onInputBlur.bind(this) })
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
+exports.default = App;
+});
+
+;require.register("components/NotesBox.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var defaultProps = {
+  onInputFocus: function onInputFocus() {},
+  onInputBlur: function onInputBlur() {}
+};
+
+var defaultState = {
+  nowNotes: '',
+  todayNotes: ''
+};
+
+var NotesBox = function (_React$Component) {
+  _inherits(NotesBox, _React$Component);
+
+  function NotesBox(props) {
+    _classCallCheck(this, NotesBox);
+
+    var _this = _possibleConstructorReturn(this, (NotesBox.__proto__ || Object.getPrototypeOf(NotesBox)).call(this, props));
+
+    _this.state = Object.assign({}, defaultState, {
+      nowNotes: localStorage.getItem('nowNotes') || '',
+      todayNotes: localStorage.getItem('todayNotes') || ''
+    });
+    return _this;
+  }
+
+  _createClass(NotesBox, [{
+    key: 'handleChangeNowNotes',
+    value: function handleChangeNowNotes(event) {
+      var newVal = event.target.value;
+      localStorage.setItem('nowNotes', newVal);
+      this.setState({
+        nowNotes: newVal
+      });
+    }
+  }, {
+    key: 'handleChangeTodayNotes',
+    value: function handleChangeTodayNotes(event) {
+      var newVal = event.target.value;
+      localStorage.setItem('todayNotes', newVal);
+      this.setState({
+        todayNotes: newVal
+      });
+    }
+  }, {
+    key: 'handleInputFocus',
+    value: function handleInputFocus(evt) {
+      this.props.onInputFocus();
+    }
+  }, {
+    key: 'handleInputBlur',
+    value: function handleInputBlur(evt) {
+      this.props.onInputBlur();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var state = this.state;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'NotesBox ' },
+        _react2.default.createElement(
+          'div',
+          { className: 'NotesBox__input-wrapper NotesBox__now-notes' },
+          _react2.default.createElement(
+            'div',
+            { className: 'NotesBox__input-label' },
+            'NOW:'
+          ),
+          _react2.default.createElement('textarea', { className: 'NotesBox__input', value: this.state.nowNotes, onChange: this.handleChangeNowNotes.bind(this), onFocus: this.handleInputFocus.bind(this), onBlur: this.handleInputBlur.bind(this) })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'NotesBox__input-wrapper NotesBox__today-notes' },
+          _react2.default.createElement(
+            'div',
+            { className: 'NotesBox__input-label' },
+            'TODAY:'
+          ),
+          _react2.default.createElement('textarea', { className: 'NotesBox__input', value: this.state.todayNotes, onChange: this.handleChangeTodayNotes.bind(this), onFocus: this.handleInputFocus.bind(this), onBlur: this.handleInputBlur.bind(this) })
+        )
+      );
+    }
+  }]);
+
+  return NotesBox;
+}(_react2.default.Component);
+
+;
+
+NotesBox.defaultProps = defaultProps;
+
+exports.default = NotesBox;
+});
+
+require.register("components/TimerBox.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _tone = require('tone');
+
+var _tone2 = _interopRequireDefault(_tone);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// if using timerbox in mutliples, maybe take the 'tick' and timeout state bits out, letting some other timeout set the tick as a prop to cue rerendering
+// should also do something about the hotkeys, though disabling them is also a fallback
+
+var defaultProps = {
+  id: null,
+  tickInterval: 50,
+  onDing: function onDing(id, preset) {},
+  useHotKeys: true
+};
+
+var presetTimes = [{ label: "pomodoro - work", duration: 25 * 60 * 1000 }, { label: "pomodoro - short break", duration: 5 * 60 * 1000 }, { label: "pomodoro - long break", duration: 10 * 60 * 1000 }, { label: "one minute", duration: 60 * 1000 }];
+
+var defaultState = {
+  selectedPresetTime: presetTimes[0],
+  bankedTime: 0,
+  startTime: 0,
+  endTime: presetTimes[0].duration,
+  isRunning: false,
+  didDing: false,
+  timeout: null,
+  lastTick: 0
+};
+
+var TimerBox = function (_React$Component) {
+  _inherits(TimerBox, _React$Component);
+
+  function TimerBox(props) {
+    _classCallCheck(this, TimerBox);
+
+    var _this = _possibleConstructorReturn(this, (TimerBox.__proto__ || Object.getPrototypeOf(TimerBox)).call(this, props));
+
+    _this.state = Object.assign({}, defaultState);
+    return _this;
+  }
+
+  _createClass(TimerBox, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.addEventListener('keydown', this.onKeyDown.bind(this));
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearTimeout(this.state.timeout);
+      window.removeEventListener('keydown', this.onKeyDown.bind(this));
+    }
+  }, {
+    key: 'selectPreset',
+    value: function selectPreset(preset) {
+      var newState = {
+        selectedPresetTime: preset,
+        endTime: preset.duration
+      };
+      _tone2.default.context.resume();
+
+      if (this.state.didDing) {
+        newState.bankedTime = 0;
+        newState.didDing = false;
+      };
+
+      if (!this.state.isRunning) {
+        newState.timeout = setTimeout(this.onTick.bind(this), this.props.tickInterval);
+        newState.isRunning = true;
+        newState.startTime = new Date();
+      }
+
+      this.setState(newState);
+    }
+  }, {
+    key: 'onKeyDown',
+    value: function onKeyDown(evt) {
+      if (!this.props.useHotKeys) {
+        return;
+      }
+      if (evt.keyCode == 32) {
+        // pressed space
+        if (this.state.isRunning) {
+          this.onPressPause();
+        } else if (this.state.didDing) {
+          this.onPressBegin();
+        } else if (this.state.bankedTime > 0) {
+          this.onPressResume();
+        } else {
+          this.onPressBegin();
+        }
+      } else if (evt.keyCode >= 49 && evt.keyCode <= 57) {
+        // pressed numeric key 1 - 9
+        var presetIndex = evt.keyCode - 49;
+        if (presetIndex < presetTimes.length) {
+          this.selectPreset(presetTimes[presetIndex]);
+        }
+      }
+    }
+  }, {
+    key: 'onSelectPresetTime',
+    value: function onSelectPresetTime(evt) {
+      var val = evt.target.value;
+      var preset = _lodash2.default.find(presetTimes, { label: val });
+      this.selectPreset(preset);
+    }
+  }, {
+    key: 'onPressBegin',
+    value: function onPressBegin() {
+      _tone2.default.context.resume();
+      this.setState({
+        startTime: new Date(),
+        bankedTime: 0,
+        timeout: setTimeout(this.onTick.bind(this), this.props.tickInterval),
+        isRunning: true,
+        didDing: false
+      });
+    }
+  }, {
+    key: 'onPressPause',
+    value: function onPressPause() {
+      clearTimeout(this.state.timeout);
+      this.setState({
+        bankedTime: this.state.bankedTime + (new Date() - this.state.startTime),
+        startTime: 0,
+        isRunning: false,
+        timeout: null
+      });
+    }
+  }, {
+    key: 'onPressResume',
+    value: function onPressResume() {
+      _tone2.default.context.resume();
+      this.setState({
+        startTime: new Date(),
+        isRunning: true,
+        timeout: setTimeout(this.onTick.bind(this), this.props.tickInterval)
+      });
+    }
+  }, {
+    key: 'onPressReset',
+    value: function onPressReset() {
+      this.setState({
+        startTime: new Date(),
+        bankedTime: 0,
+        didDing: false
+      });
+    }
+  }, {
+    key: 'onTick',
+    value: function onTick() {
+      var state = this.state;
+      var timeout = null;
+      var msRemaining = this.calculateMsRemaining();
+      clearTimeout(state.timeout);
+
+      if (msRemaining <= 0) {
+        // ding
+        this.setState({
+          bankedTime: state.endTime - msRemaining, // (subtracting negative msRemaining == adding overage)
+          isRunning: false,
+          didDing: true,
+          lastTick: new Date(),
+          timeout: null
+        }, function () {
+          this.props.onDing(this.props.id);
+        }.bind(this));
+      } else {
+        // tick
+        if (state.isRunning) {
+          timeout = setTimeout(this.onTick.bind(this), this.props.tickInterval);
+        }
+        this.setState({
+          lastTick: new Date(),
+          timeout: timeout
+        });
+      }
+    }
+  }, {
+    key: 'calculateMsRemaining',
+    value: function calculateMsRemaining() {
+      var state = this.state;
+      var msRemaining = state.endTime - state.bankedTime;
+
+      if (state.isRunning) {
+        msRemaining -= new Date() - state.startTime;
+      }
+
+      return msRemaining;
+    }
+  }, {
+    key: 'renderPresetSelector',
+    value: function renderPresetSelector() {
+      var state = this.state;
+      var presetTimeOptions = [];
+      var selection = '';
+
+      if (state.selectedPresetTime) {
+        selection = state.selectedPresetTime.label;
+      }
+
+      _lodash2.default.each(presetTimes, function (preset) {
+        presetTimeOptions.push(_react2.default.createElement(
+          'option',
+          { value: preset.label, key: preset.label },
+          preset.label
+        ));
+      });
+
+      return _react2.default.createElement(
+        'select',
+        { className: 'TimerBox__preset-selector', name: 'preset-times', value: selection, onChange: this.onSelectPresetTime.bind(this) },
+        presetTimeOptions
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var state = this.state;
+      var msRemaining = this.calculateMsRemaining();
+      var timeRemaining = _moment2.default.duration(Math.ceil(msRemaining / 1000), 's');
+      var minutesRemaining = timeRemaining.minutes();
+      var secondsRemaining = timeRemaining.seconds();
+
+      var startButton = null;
+      var resetButton = _react2.default.createElement(
+        'button',
+        { className: 'TimerBox__button_reset', onClick: this.onPressReset.bind(this) },
+        'Reset'
+      );
+
+      var rootClass = "";
+
+      if (state.isRunning) {
+        rootClass = "TimerBox_running";
+        startButton = _react2.default.createElement(
+          'button',
+          { className: 'TimerBox__button_pause', onClick: this.onPressPause.bind(this) },
+          'Pause'
+        );
+      } else if (state.didDing) {
+        rootClass = "TimerBox_done";
+        startButton = _react2.default.createElement(
+          'button',
+          { className: 'TimerBox__button_restart', onClick: this.onPressBegin.bind(this) },
+          'Restart'
+        );
+      } else if (state.bankedTime > 0) {
+        rootClass = "TimerBox_paused";
+        startButton = _react2.default.createElement(
+          'button',
+          { className: 'TimerBox__button_resume', onClick: this.onPressResume.bind(this) },
+          'Resume'
+        );
+      } else {
+        startButton = _react2.default.createElement(
+          'button',
+          { className: 'TimerBox__button_start', onClick: this.onPressBegin.bind(this) },
+          'Start'
+        );
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: "TimerBox " + rootClass },
+        _react2.default.createElement(
+          'div',
+          { className: 'TimerBox__time-remaining' },
+          _lodash2.default.padStart(minutesRemaining, 2, '0'),
+          ' ',
+          _react2.default.createElement(
+            'span',
+            { className: 'TimerBox__col' },
+            ':'
+          ),
+          ' ',
+          _lodash2.default.padStart(secondsRemaining, 2, '0')
+        ),
+        this.renderPresetSelector(),
+        _react2.default.createElement(
+          'div',
+          { className: 'TimerBox__buttons' },
+          startButton,
+          resetButton
+        )
+      );
+    }
+  }]);
+
+  return TimerBox;
+}(_react2.default.Component);
+
+;
+
+TimerBox.defaultProps = defaultProps;
+
+exports.default = TimerBox;
+});
+
+require.register("initialize.js", function(exports, require, module) {
+'use strict';
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _App = require('components/App');
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+document.addEventListener('DOMContentLoaded', function () {
+  _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.querySelector('#app'));
+});
+});
+
+require.register("util/notifier.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// Basic in-browser notification
+// (could be more robust...)
+
+// Notifications documentation: 
+// https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API
+// https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
+
+var defaultOptions = {
+  maxDisplayTime: 5 * 1000, // ms
+  defaultIcon: null
+};
+
+var generalOptions = Object.assign({}, defaultOptions);
+
+function spawnNote() {
+  var noteOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var note = new Notification(noteOptions.title || '', {
+    body: noteOptions.message || '',
+    icon: noteOptions.icon || generalOptions.defaultIcon
+  });
+  var duration = noteOptions.duration || generalOptions.maxDisplayTime;
+
+  setTimeout(function () {
+    note.close();
+  }.bind(note), duration);
+}
+
+exports.default = {
+  setOptions: function setOptions(newOptions) {
+    generalOptions = Object.assign({}, defaultOptions, generalOptions, newOptions);
+  },
+
+  askPermission: function askPermission() {
+    // note: this returns a promise
+    return Notification.requestPermission();
+  },
+
+  hasAskedPermission: function hasAskedPermission() {
+    return Notification.permission === 'granted' || Notification.permission === 'denied';
+  },
+
+  hasPermission: function hasPermission() {
+    return Notification.permission === 'granted';
+  },
+
+  send: function send() {
+    var noteOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    spawnNote(noteOptions);
+  }
+};
+});
+
+;require.alias("buffer/index.js", "buffer");
+require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+  
+});})();require('___globals___');
+
+
+//# sourceMappingURL=app.js.map
